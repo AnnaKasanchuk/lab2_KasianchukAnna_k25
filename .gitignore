@@ -66,3 +66,9 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# CLion
+cmake-build-*/
+.idea/
+
+data_*.txt

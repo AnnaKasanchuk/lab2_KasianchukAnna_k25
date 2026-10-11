@@ -1,0 +1,133 @@
+Hardware threads: 16
+
+=== any_of, N = 100000, predicate: fast (x > limit) ===
+--- library std::any_of ---
+no policy          0.294 ms   result = false
+seq                0.251 ms   result = false
+par                0.180 ms   result = false
+unseq              0.251 ms   result = false
+par_unseq          0.203 ms   result = false
+--- custom parallel any_of ---
+K       Time (ms)
+1       0.686
+2       0.448
+4       0.532
+8       0.986
+16      1.565
+32      2.866
+64      6.149
+128     12.039
+256     23.158
+512     46.088
+1024    92.826
+Best K = 2 (0.448 ms), hardware threads = 16, K / threads = 0.12
+
+=== any_of, N = 100000, predicate: heavy (sum of 20 sin) ===
+--- library std::any_of ---
+no policy         27.281 ms   result = false
+seq               27.021 ms   result = false
+par                2.894 ms   result = false
+unseq             26.990 ms   result = false
+par_unseq          3.335 ms   result = false
+--- custom parallel any_of ---
+K       Time (ms)
+1       27.566
+2       13.948
+4       7.310
+8       5.925
+16      4.020
+32      4.788
+64      7.165
+128     12.902
+256     25.354
+512     51.075
+1024    104.822
+Best K = 16 (4.020 ms), hardware threads = 16, K / threads = 1.00
+
+=== any_of, N = 1000000, predicate: fast (x > limit) ===
+--- library std::any_of ---
+no policy          2.517 ms   result = false
+seq                2.648 ms   result = false
+par                0.589 ms   result = false
+unseq              2.522 ms   result = false
+par_unseq          0.556 ms   result = false
+--- custom parallel any_of ---
+K       Time (ms)
+1       2.868
+2       1.655
+4       1.141
+8       1.367
+16      1.745
+32      3.580
+64      10.615
+128     14.903
+256     29.531
+512     53.697
+1024    101.686
+Best K = 4 (1.141 ms), hardware threads = 16, K / threads = 0.25
+
+=== any_of, N = 1000000, predicate: heavy (sum of 20 sin) ===
+--- library std::any_of ---
+no policy        271.380 ms   result = false
+seq              272.157 ms   result = false
+par               27.738 ms   result = false
+unseq            271.352 ms   result = false
+par_unseq         28.731 ms   result = false
+--- custom parallel any_of ---
+K       Time (ms)
+1       271.305
+2       140.118
+4       86.735
+8       47.718
+16      28.744
+32      30.710
+64      31.654
+128     32.731
+256     36.371
+512     54.800
+1024    104.745
+Best K = 16 (28.744 ms), hardware threads = 16, K / threads = 1.00
+
+=== any_of, N = 10000000, predicate: fast (x > limit) ===
+--- library std::any_of ---
+no policy         26.650 ms   result = false
+seq               25.873 ms   result = false
+par                3.498 ms   result = false
+unseq             26.105 ms   result = false
+par_unseq          3.426 ms   result = false
+--- custom parallel any_of ---
+K       Time (ms)
+1       26.770
+2       15.879
+4       8.502
+8       4.772
+16      3.519
+32      4.545
+64      7.278
+128     15.164
+256     28.580
+512     56.713
+1024    118.905
+Best K = 16 (3.519 ms), hardware threads = 16, K / threads = 1.00
+
+=== any_of, N = 10000000, predicate: heavy (sum of 20 sin) ===
+--- library std::any_of ---
+no policy       2851.969 ms   result = false
+seq             2846.510 ms   result = false
+par              285.254 ms   result = false
+unseq           2832.258 ms   result = false
+par_unseq        314.089 ms   result = false
+--- custom parallel any_of ---
+K       Time (ms)
+1       2890.925
+2       2105.399
+4       1049.896
+8       448.421
+16      283.952
+32      300.199
+64      296.064
+128     279.323
+256     286.566
+512     288.058
+1024    305.385
+Best K = 128 (279.323 ms), hardware threads = 16, K / threads = 8.00
